@@ -7,13 +7,24 @@ st.title("Diabetes Progression Predictor")
 # Load model
 model = joblib.load("model.pkl")
 
-st.subheader("Enter Patient Features as a Python list")
-user_input = st.text_input("Example: [0.038, 0.050, 0.061, 0.021, -0.044, -0.034, -0.043, -0.002, 0.019, -0.017]")
+st.subheader("Enter Patient Features")
+
+# Create 10 separate input fields
+age = st.text_input("Age")
+sex = st.text_input("Sex")
+bmi = st.text_input("BMI")
+bp = st.text_input("Blood Pressure")
+s1 = st.text_input("S1")
+s2 = st.text_input("S2")
+s3 = st.text_input("S3")
+s4 = st.text_input("S4")
+s5 = st.text_input("S5")
+s6 = st.text_input("S6")
 
 if st.button("Predict Progression"):
     try:
-        # Evaluate string to list
-        features = eval(user_input)
+        # Convert input to float and form feature array
+        features = [float(age), float(sex), float(bmi), float(bp), float(s1), float(s2), float(s3), float(s4), float(s5), float(s6)]
         features = np.array(features).reshape(1, -1)
         prediction = model.predict(features)
         st.success(f"Predicted Disease Progression: {prediction[0]:.2f}")
