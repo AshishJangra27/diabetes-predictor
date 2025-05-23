@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 
-st.title("Diabetes Progression Predictor")
+st.title("Diabetes Progression Predictor by Ashish")
 
 # Load model
 model = joblib.load("model.pkl")
